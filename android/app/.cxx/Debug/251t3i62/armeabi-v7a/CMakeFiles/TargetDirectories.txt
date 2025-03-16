@@ -1,0 +1,2 @@
+C:/development/flutter_apps/plant_monitor_app/android/app/.cxx/Debug/251t3i62/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/development/flutter_apps/plant_monitor_app/android/app/.cxx/Debug/251t3i62/armeabi-v7a/CMakeFiles/rebuild_cache.dir

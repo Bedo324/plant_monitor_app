@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plant_monitor_app/screens/add_planet_screen.dart';
 import 'package:plant_monitor_app/screens/plant_details_screen.dart';
 import 'package:plant_monitor_app/widgets/plant_card.dart';
 
@@ -53,7 +54,9 @@ class MainScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AddPlantScreen.screenRoute);
+        },
         backgroundColor: Colors.green,
         child: const Icon(Icons.add),
       ),

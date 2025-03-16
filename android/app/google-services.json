@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "494571496386",
+    "project_id": "plant-monitor-4167a",
+    "storage_bucket": "plant-monitor-4167a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494571496386:android:1780965f8546ad72a8ac5b",
+        "android_client_info": {
+          "package_name": "com.bedooo.plant_monitor_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB76rdcCVe5cUwEnpvk4bMBRNMmKuLl9yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
