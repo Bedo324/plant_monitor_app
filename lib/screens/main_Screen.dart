@@ -1,66 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:plant_monitor_app/screens/add_planet_screen.dart';
-import 'package:plant_monitor_app/screens/plant_details_screen.dart';
-import 'package:plant_monitor_app/widgets/plant_card.dart';
+import 'package:plant_monitor_app/screens/plant_details_screen.dart'; 
+import 'package:plant_monitor_app/models/plant_data.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 118),
-              child: Text("Hey, Let's grow your plant",
-              style: TextStyle(
-                color: Colors.green,
-                fontSize: 25,
-              ),
-              ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            "Let's take care of your plants!",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 3, 79, 6),
             ),
-            SizedBox(
-              height: 50,
-            ),
-            Container(
-              height: 500,
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Consumer<PlantData>(
+            builder: (context, plantData, child) {
+              return Expanded(
+                child: ListView.builder(
+                  itemCount: plantData.plants.length,
+                  itemBuilder: (context, index) {
+                    final plant = plantData.plants[index];
+                    return ListTile(
+                      leading: SizedBox(width: 50, height: 50, child: plant.image),
+                      title: Text(plant.name),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PlantDetailsScreen(
+                              plantName: plant.name,
+                              plantImage: plant.image,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return PlantCard(
-                    name: [
-                      'strawberry 1',
-                      'strawberry 2',
-                      'strawberry 3',
-                      'strawberry 4'
-                    ][index],
-                    image: 'images/ss.png',
-                    onTap: () {
-                      Navigator.pushNamed(context, PlantDetailScreen.screenRoute);
-                    },
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+              );
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, AddPlantScreen.screenRoute);
         },
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
-      
     );
   }
 }

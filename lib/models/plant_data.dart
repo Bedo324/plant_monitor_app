@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:plant_monitor_app/models/plant.dart';
 
-class TaskData extends ChangeNotifier {
+class PlantData extends ChangeNotifier {
   List<Plant> plants = [
-    Plant(name: 'strawberry1'),
-    Plant(name: 'strawberry2'),
-    Plant(name: 'strawberry3'),
-    Plant(name: 'strawberry4'),
+    Plant(name: 'strawberry', image: Image.asset('images/ss.png')),
   ];
 
-  void addTask(String newPlantTitle) {
-    plants.add(Plant(name: newPlantTitle));
+  void addPlant(String newPlantTitle ,Image newPlantImage) {
+    plants.add(Plant(name: newPlantTitle , image: newPlantImage));
     notifyListeners();
   }
 
-  void deleteTask(Plant plant) {
+  void deletePlant(Plant plant) {
     plants.remove(plant);
     notifyListeners();
   }

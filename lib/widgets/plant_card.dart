@@ -15,7 +15,7 @@ class PlantCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(image, height: 80),
+            Image.asset('images/ss.png', height: 80),
             const SizedBox(height: 8),
             Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
           ],

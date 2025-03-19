@@ -63,11 +63,15 @@ class _CameraScreenState extends State<CameraScreen> {
 
         // Get the directory to save the photo
         final directory = await getExternalStorageDirectory();
-        final String filePath = '${directory!.path}/${DateTime.now().millisecondsSinceEpoch}.jpg';
+        final String filePath = '${directory!.path}/${DateTime.now().millisecondsSinceEpoch}.png';
 
         // Save the photo to the device
         await photo.saveTo(filePath);
-
+        // Save the photo to the gallery
+        final File savedImage = File(filePath);
+        final Directory? gallaryPath = await getExternalStorageDirectory();
+        final String newFilePath = '${gallaryPath!.path}/Pictures/${DateTime.now().millisecondsSinceEpoch}.png';
+        await savedImage.copy(newFilePath);
         // Optionally, show a message or perform additional actions
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Photo saved to $filePath')),
